@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pixel Karate Kata Master</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #1a1a1a;
+      font-family: 'Press Start 2P', cursive;
+      overflow: hidden;
+    }
+    .pixel-border {
+      box-shadow: 
+        0 -4px 0 0 black,
+        0 4px 0 0 black,
+        -4px 0 0 0 black,
+        4px 0 0 0 black;
+    }
+    .pixel-shadow {
+      filter: drop-shadow(4px 4px 0px rgba(0,0,0,0.5));
+    }
+    .crt-overlay::after {
+      content: " ";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+      z-index: 100;
+      background-size: 100% 2px, 3px 100%;
+      pointer-events: none;
+    }
+    @keyframes kiai-shake {
+      0% { transform: translate(0,0) scale(1); }
+      25% { transform: translate(-5px, 5px) scale(1.1); }
+      50% { transform: translate(5px, -5px) scale(1.1); }
+      75% { transform: translate(-5px, -5px) scale(1.1); }
+      100% { transform: translate(0,0) scale(1); }
+    }
+    .animate-kiai {
+      animation: kiai-shake 0.2s infinite;
+    }
+    @keyframes move-punch {
+      0% { transform: translateX(0); }
+      50% { transform: translateX(20px); }
+      100% { transform: translateX(0); }
+    }
+    @keyframes move-kick {
+      0% { transform: rotate(0deg); }
+      50% { transform: rotate(-30deg) translateY(-10px); }
+      100% { transform: rotate(0deg); }
+    }
+    @keyframes move-block {
+      0% { transform: scale(1); }
+      50% { transform: scale(0.9) translateY(5px); }
+      100% { transform: scale(1); }
+    }
+    .anim-punch { animation: move-punch 0.15s ease-out; }
+    .anim-kick { animation: move-kick 0.2s ease-out; }
+    .anim-block { animation: move-block 0.15s ease-out; }
+  </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0"
+  }
+}
+</script>
+</head>
+<body>
+  <div id="root"></div>
+</body>
+</html>
