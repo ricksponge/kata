@@ -1,9 +1,9 @@
 
 export enum MoveType {
-  PUNCH = 'Oi-Zuki',
-  KICK = 'Mae-Geri',
-  BLOCK = 'Gedan-Barai',
-  KIAI = 'KIAI'
+  GEDAN_BARAI = 'Gedan-Barai', // Blocage bas
+  OI_ZUKI_JODAN = 'Oi-Zuki Jodan', // Poing niveau visage
+  KIAI = 'KIAI',
+  YAME = 'Yame' // Retour au calme
 }
 
 export interface Kata {
@@ -12,11 +12,11 @@ export interface Kata {
   sequence: MoveType[];
   difficulty: 'Débutant' | 'Intermédiaire' | 'Maître';
   description: string;
+  translations: Record<string, string>;
 }
 
 export enum GameState {
   IDLE = 'IDLE',
-  TUTORIAL = 'TUTORIAL',
   STARTING = 'STARTING',
   PERFORMING = 'PERFORMING',
   SUCCESS = 'SUCCESS',

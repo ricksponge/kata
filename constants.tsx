@@ -3,37 +3,42 @@ import { MoveType, Kata } from './types';
 
 export const KATAS: Kata[] = [
   {
-    id: '1',
-    name: 'Heian Shodan',
-    description: 'Le premier pas. Maîtrisez la base de la frappe.',
-    sequence: [MoveType.BLOCK, MoveType.PUNCH, MoveType.PUNCH, MoveType.KIAI],
-    difficulty: 'Débutant'
-  },
-  {
-    id: '2',
-    name: 'Gojushiho',
-    description: 'La danse du guerrier. Enchaînement de coups de pieds.',
-    sequence: [MoveType.KICK, MoveType.BLOCK, MoveType.PUNCH, MoveType.BLOCK, MoveType.KICK, MoveType.KIAI],
-    difficulty: 'Intermédiaire'
-  },
-  {
-    id: '3',
-    name: 'Enpi',
-    description: 'Le vol de l\'hirondelle. Vitesse et précision extrêmes.',
-    sequence: [MoveType.BLOCK, MoveType.KICK, MoveType.PUNCH, MoveType.KICK, MoveType.PUNCH, MoveType.BLOCK, MoveType.PUNCH, MoveType.KIAI],
-    difficulty: 'Maître'
+    id: 'heian-shodan',
+    name: 'Heian Shodan (Simplifié)',
+    description: 'Le premier kata fondamental. Paix et Tranquillité du premier niveau.',
+    difficulty: 'Débutant',
+    sequence: [
+      MoveType.GEDAN_BARAI,   // Gauche
+      MoveType.OI_ZUKI_JODAN, // Droite
+      MoveType.GEDAN_BARAI,   // Droite
+      MoveType.OI_ZUKI_JODAN, // Gauche
+      MoveType.OI_ZUKI_JODAN, // Gauche centre
+      MoveType.KIAI,          // Oi-Zuki Droite + KIAI
+      MoveType.GEDAN_BARAI,   // Pivot gauche
+      MoveType.OI_ZUKI_JODAN, // Gauche
+      MoveType.GEDAN_BARAI,   // Pivot droite
+      MoveType.OI_ZUKI_JODAN, // Droite
+      MoveType.GEDAN_BARAI,   // Recul gauche
+      MoveType.GEDAN_BARAI,   // Recul droite
+      MoveType.YAME           // Salut final
+    ],
+    translations: {
+      [MoveType.GEDAN_BARAI]: 'Blocage bas (balayage)',
+      [MoveType.OI_ZUKI_JODAN]: 'Coup de poing direct (visage)',
+      [MoveType.KIAI]: 'Cri de l\'esprit libéré',
+      [MoveType.YAME]: 'Retour à la position de repos'
+    }
   }
 ];
 
 export const MOVE_KEYS: Record<string, MoveType> = {
-  'ArrowUp': MoveType.PUNCH,
-  'ArrowDown': MoveType.BLOCK,
-  'ArrowLeft': MoveType.KICK,
-  'ArrowRight': MoveType.KICK,
+  'ArrowDown': MoveType.GEDAN_BARAI,
+  'ArrowUp': MoveType.OI_ZUKI_JODAN,
   'Space': MoveType.KIAI,
-  'w': MoveType.PUNCH,
-  's': MoveType.BLOCK,
-  'a': MoveType.KICK,
-  'd': MoveType.KICK,
-  'Enter': MoveType.KIAI
+  'Enter': MoveType.KIAI,
+  'Shift': MoveType.YAME,
+  's': MoveType.GEDAN_BARAI,
+  'w': MoveType.OI_ZUKI_JODAN,
+  'k': MoveType.KIAI,
+  'y': MoveType.YAME
 };
